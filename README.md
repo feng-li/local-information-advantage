@@ -1,45 +1,23 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+## 代码说明
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+### get_table_name.py 
+从shenzhen,shanghai,chuangyeban,zhongxiaoban四个数据库中获取表名称,分别存为shenzhen.csv,shanghai.csv,chuangyeban.csv,zhongxiaoban.csv
 
----
+### emotion_score.py 
+定义了一些需要用到的函数和emotion_score类
+1.**connect_database**用于连接数据库,输入数据库名称
+2.**select_from_table**用于从表中筛选信息,输入表名称,数据库连接,输出筛选的信息(list)
+3.**get_table_name_list**用于获得数据库中表名称,输入数据库名称以及数据库连接,输出表名称(list)
+4.**open_dict**用于导入情感词典
+5.**match**用于匹配从数据库中得出的信息和sas文件的地点信息,输入数据库名称以及股票编号,输出匹配好的csv文件
+6.**emotion_score**进行情感打分,输入为单条文本信息,返回分数
 
-## Edit a file
+###test.py
+参数为数据库名称(测试时使用shenzhen,因为只有这个的sas文件拆了)
+先读入存有数据库所有表名称的csv文件,将数据库名称以及股票编号分别存为list
+然后连接数据库,对数据库中第一到第三个表(一个表即一支股票)进行打分,存为[股票编码]_emotion.csv文件()
+关闭数据库连接
+最后对一至三表的csv文件信息和sas文件五个地点信息进行匹配,输出[股票编码]_match.csv文件
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
-
----
-
-## Create a file
-
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
