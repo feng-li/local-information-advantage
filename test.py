@@ -32,7 +32,7 @@ with open(str(database)+'.csv') as f:
         
 a = len(table_name)
 con = connect_database(database)#连接数据库
-for i in range(1,3):
+for i in range(0,3):
     table = table_name[i]
     stk = stk_name[i]
     content, Id, collect, send, click, reply, time, floor = select_from_table(table, con)#选取信息
@@ -46,7 +46,7 @@ for i in range(1,3):
     columns = ['Id', '已采', '已发', '点击', '回复','时间','楼层','情绪']
     dataframe.to_csv(str(stk)+"_emotion.csv",index = False,sep=',', columns = columns)#输出情感信息的csv文件
 con.close()
-for i in range(1,3): 
+for i in range(0,3): 
     stk = stk_name[i]
     match(database, stk)#将情感信息文件和地点信息文件进行匹配，输出csv
     
