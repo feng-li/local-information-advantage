@@ -20,4 +20,10 @@
 关闭数据库连接  
 最后对一至三表的csv文件信息和sas文件五个地点信息进行匹配,输出[股票编码]_match.csv文件(000001_match.csv,000002_match.csv,000004_match.csv)
 
+###运行方式
+python3 test.py shenzhen 5
+完成shenzhen数据库中4%-5%的股票的情感打分以及匹配  	
+输出：[股票编码]_emotion.csv [股票编码]_match.csv 5.csv  	
+5.csv中会有4%-5%的股票编码
+
 
