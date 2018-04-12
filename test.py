@@ -10,16 +10,8 @@ import pandas as pd
 import sys
 import re
 
-
-#300002 chuangyeban 
-#600281 shanghai
-#600346 shagnhai
-#000517 shenzhen
-#000004 shenzhen
-#002076 zhongxiaoban
-#shanghai  content_600000 ~~~ 发现数据库的表的名称有不同的，而且股票的序号也不是连续的
-
 database = sys.argv[1]
+k = int(sys.argv[2])#从k-1%执行到k%
 
 with open(str(database)+'.csv') as f:
     table_name = []
@@ -32,7 +24,7 @@ with open(str(database)+'.csv') as f:
         
 a = len(table_name)
 con = connect_database(database)#连接数据库
-for i in range(0,3):
+for i in range(int(a*(k-1)/100),int(a*k/100)):
     table = table_name[i]
     stk = stk_name[i]
     content, Id, collect, send, click, reply, time, floor = select_from_table(table, con)#选取信息
@@ -46,8 +38,12 @@ for i in range(0,3):
     columns = ['Id', '已采', '已发', '点击', '回复','时间','楼层','情绪']
     dataframe.to_csv(str(stk)+"_emotion.csv",index = False,sep=',', columns = columns)#输出情感信息的csv文件
 con.close()
-for i in range(0,3): 
+stk_list = [] 
+for i in range(int(a*(k-1)/100),int(a*k/100)): 
     stk = stk_name[i]
     match(database, stk)#将情感信息文件和地点信息文件进行匹配，输出csv
+    stk_list.append(stk)
     
+stk_df = pd.DataFrame(stk_list)    
+stk_df.to_csv(str(k)+'.csv')    
 
