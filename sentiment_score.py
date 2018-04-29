@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 # -*- coding: utf-8 -*-
 """
 Created on Mon Mar  5 16:47:47 2018
@@ -70,18 +72,19 @@ def get_table_name_list(database, con):
 #读入情感词典
 def open_dict(Dict, path):
     path = path + '/%s.txt' % Dict
-    dictionary = open(path, 'r', encoding='utf-8')
     emo_dict = []
-    for word in dictionary:
-        word = word.strip('\n').strip(' ')
-        emo_dict.append(word)
-        dictionary.close()
+    with open(path, 'r', encoding='utf-8') as dictionary:
+        for word in dictionary:
+            word = word.strip('\n').strip(' ')
+            emo_dict.append(word)
+            # dictionary.close()
     return emo_dict
-deny_word = open_dict(Dict = u'否定词', path = r'hownet_sentiment')
-postdict = open_dict(Dict = u'正面情绪词语_', path = r'hownet_sentiment')
-negdict = open_dict(Dict = u'负面情绪词语_', path = r'hownet_sentiment')
 
-degree_word = open_dict(Dict = u'程度级别词语_', path = r'hownet_sentiment')
+deny_word = open_dict(Dict = u'否定词', path = r'data/hownet_sentiment')
+postdict = open_dict(Dict = u'正面情绪词语_', path = r'data/hownet_sentiment')
+negdict = open_dict(Dict = u'负面情绪词语_', path = r'data/hownet_sentiment')
+
+degree_word = open_dict(Dict = u'程度级别词语_', path = r'data/hownet_sentiment')
 mostdict = degree_word[degree_word.index('extreme')+1 : degree_word.index('very')]#权重4，
 verydict = degree_word[degree_word.index('very')+1 : degree_word.index('more')]#权重3
 moredict = degree_word[degree_word.index('more')+1 : degree_word.index('ish')]#权重2
