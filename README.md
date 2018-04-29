@@ -37,7 +37,7 @@ csv文件信息和sas文件五个地点信息进行匹配,输出[股票编码]_m
 
 ### 运行方式
 
-    python3 main.py shenzhen /data4/yqhuang/database_table_list/ 5
+    python3 main.py shenzhen /data4/yqhuang/database_table_list/shenzhen.csv 5
 
 完成`shenzhen数`据库中`4%-5%`的股票的情感打分以及匹配
 输出：

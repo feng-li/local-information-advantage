@@ -142,9 +142,9 @@ class sentiment_score():
 
 #输入：数据库名称， 股票编号
 #输出：匹配好地点信息的csv文件
-def match(database, stk):
-    ip_sas = pd.read_sas('/data4/yqhuang/split-docs/a_'+str(database)+'/_'+str(stk)+'.sas7bdat',encoding = 'gbk')
-    df_ip = ip_sas[['Id','posterprov','postercity','firmprov','firmcity1','firmcity2']]
-    df_sentiment = pd.read_csv('/data1/cufe/students/2015310884laiqiuhong/'+str(stk)+'_sentiment.csv', index_col = None, dtype = {'Id':str})
-    df = pd.merge(df_sentiment, df_ip, how = 'outer')
-    df.to_csv(str(stk)+"_match.csv",index = False,sep=',')
+# def match(database, stk):
+#     ip_sas = pd.read_sas('/data4/yqhuang/split-docs/a_'+str(database)+'/_'+str(stk)+'.sas7bdat',encoding = 'gbk')
+#     df_ip = ip_sas[['Id','posterprov','postercity','firmprov','firmcity1','firmcity2']]
+#     df_sentiment = pd.read_csv('/data1/cufe/students/2015310884laiqiuhong/'+str(stk)+'_sentiment.csv', index_col = None, dtype = {'Id':str})
+#     df = pd.merge(df_sentiment, df_ip, how = 'outer')
+#     df.to_csv(str(stk)+"_match.csv",index = False,sep=',')
