@@ -16,8 +16,3 @@ for database in database_list:
     con.close()
     df = pd.DataFrame(table_list)
     df.to_csv(str(database)+'.csv',index = False, header = False)
-    
-    
-    
-
- 

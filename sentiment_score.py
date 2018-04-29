@@ -13,14 +13,14 @@ import pandas as pd
 ###连接数据库
 #输入：数据库名称
 def connect_database(database):
-    con = pymysql.connect(  
-        user = "cufe",  
-        password = "dashuju",  
-        port = 3306,  
-        host = "127.0.0.1", 
-        db = str(database),  
+    con = pymysql.connect(
+        user = "cufe",
+        password = "dashuju",
+        port = 3306,
+        host = "127.0.0.1",
+        db = str(database),
         charset = 'utf8'
-    ) 
+    )
     return(con)
 
 ###从表中选择信息
@@ -36,11 +36,11 @@ def select_from_table(table_name, con):
     reply = []
     time = []
     floor = []
-  
-    cur.execute(sql_1)    
-    row = cur.fetchone()  
+
+    cur.execute(sql_1)
+    row = cur.fetchone()
     while row is not None:
-        content.append(row[0]) 
+        content.append(row[0])
         Id.append(row[1])
         collect.append(row[2])
         send.append(row[3])
@@ -49,7 +49,7 @@ def select_from_table(table_name, con):
         time.append(row[6])
         floor.append(row[7])
         row = cur.fetchone()
-    return(content, Id, collect, send, click, reply, time, floor)    
+    return(content, Id, collect, send, click, reply, time, floor)
 
 ###获得某数据库所有表的名称
 #输入：数据库名称， 游标
@@ -57,13 +57,13 @@ def select_from_table(table_name, con):
 def get_table_name_list(database, con):
     cur = pymysql.cursors.SSCursor(con)
     sql_1 = "select table_name from information_schema.tables where table_schema='"+str(database)+"'"
-    cur.execute(sql_1)    
-    row = cur.fetchone()  
+    cur.execute(sql_1)
+    row = cur.fetchone()
     table_name_list = []
     while row is not None:
         if re.findall(r"\d+\.?\d*",row[0]):
             table_name_list.append(row[0])
-        row = cur.fetchone()
+            row = cur.fetchone()
 
     return(table_name_list)
 
@@ -75,7 +75,7 @@ def open_dict(Dict, path):
     for word in dictionary:
         word = word.strip('\n').strip(' ')
         emo_dict.append(word)
-    dictionary.close()    
+        dictionary.close()
     return emo_dict
 deny_word = open_dict(Dict = u'否定词', path = r'hownet_sentiment')
 postdict = open_dict(Dict = u'正面情绪词语_', path = r'hownet_sentiment')
@@ -85,7 +85,7 @@ degree_word = open_dict(Dict = u'程度级别词语_', path = r'hownet_sentiment
 mostdict = degree_word[degree_word.index('extreme')+1 : degree_word.index('very')]#权重4，
 verydict = degree_word[degree_word.index('very')+1 : degree_word.index('more')]#权重3
 moredict = degree_word[degree_word.index('more')+1 : degree_word.index('ish')]#权重2
-ishdict = degree_word[degree_word.index('ish')+1 : ]#权重0.5  
+ishdict = degree_word[degree_word.index('ish')+1 : ]#权重0.5
 
 #句子打分
 #第一步：读取数据，进行分句。
@@ -93,16 +93,16 @@ ishdict = degree_word[degree_word.index('ish')+1 : ]#权重0.5
 #第三步：往情感词前一位查找程度词。为程度词设权值（extreme-4,very-3,more-2,ish-0.5），乘以情感值。
 #第四步：往情感词前一位查找否定词，得分变为相反数。
 #第五步：计算一条句子所有分词的得分相加为整句的情感得分。
-class emotion_score():
-    
+class sentiment_score():
+
     def __init__(self, text):
         self.text = text
         self.scores = 0
-        
+
     def delete_useless_info(self):
         if re.search('作者',self.text):
             self.text = self.text[:re.search('作者',self.text).start()]
-    
+
     def get_score(self):
         word_list = list(jieba.cut(self.text))#分句
         self.scores = 0#记录整句情感得分
@@ -133,8 +133,8 @@ class emotion_score():
                         score *= 2
                     elif word_list[index-1] in ishdict:
                         score *= 0.5
-            index += 1
-            self.scores += score 
+                        index += 1
+                        self.scores += score
         return self.scores
 
 #输入：数据库名称， 股票编号
@@ -142,9 +142,6 @@ class emotion_score():
 def match(database, stk):
     ip_sas = pd.read_sas('/data4/yqhuang/split-docs/a_'+str(database)+'/_'+str(stk)+'.sas7bdat',encoding = 'gbk')
     df_ip = ip_sas[['Id','posterprov','postercity','firmprov','firmcity1','firmcity2']]
-    df_emotion = pd.read_csv('/data1/cufe/students/2015310884laiqiuhong/'+str(stk)+'_emotion.csv', index_col = None, dtype = {'Id':str})
-    df = pd.merge(df_emotion, df_ip, how = 'outer')
+    df_sentiment = pd.read_csv('/data1/cufe/students/2015310884laiqiuhong/'+str(stk)+'_sentiment.csv', index_col = None, dtype = {'Id':str})
+    df = pd.merge(df_sentiment, df_ip, how = 'outer')
     df.to_csv(str(stk)+"_match.csv",index = False,sep=',')
-
-        
-
