@@ -11,6 +11,7 @@ import pymysql
 import re
 import jieba
 import pandas as pd
+import os
 
 ###连接数据库
 #输入：数据库名称
@@ -80,11 +81,13 @@ def open_dict(Dict, path):
             # dictionary.close()
     return emo_dict
 
-deny_word = open_dict(Dict = u'否定词', path = r'data/hownet_sentiment')
-postdict = open_dict(Dict = u'正面情绪词语_', path = r'data/hownet_sentiment')
-negdict = open_dict(Dict = u'负面情绪词语_', path = r'data/hownet_sentiment')
+cwd = os.path.dirname(os.path.abspath(__file__))
 
-degree_word = open_dict(Dict = u'程度级别词语_', path = r'data/hownet_sentiment')
+deny_word = open_dict(Dict = u'否定词', path = cwd+'/data/hownet_sentiment')
+postdict = open_dict(Dict = u'正面情绪词语_', path = cwd + '/data/hownet_sentiment')
+negdict = open_dict(Dict = u'负面情绪词语_', path = cwd + '/data/hownet_sentiment')
+
+degree_word = open_dict(Dict = u'程度级别词语_', path = cwd + '/data/hownet_sentiment')
 mostdict = degree_word[degree_word.index('extreme')+1 : degree_word.index('very')]#权重4，
 verydict = degree_word[degree_word.index('very')+1 : degree_word.index('more')]#权重3
 moredict = degree_word[degree_word.index('more')+1 : degree_word.index('ish')]#权重2

@@ -9,6 +9,7 @@ Created on Thu Mar 29 20:57:43 2018
 
 from sentiment_score import*
 import pandas as pd
+from sas7bdat import SAS7BDAT
 import sys
 import re
 import logging
@@ -46,7 +47,9 @@ for i in range(int(a*(k-1)/100),int(a*k/100)):
     # dataframe.to_csv(out_path + str(stk)+"_sentiment.csv",index = False,sep=',', columns = columns)#输出情感信息的csv文件
     logging.info('Processing database ' + database + " with table " + table + " done.")
 
-    ip_sas = pd.read_sas('/data4/yqhuang/split-docs/a_'+str(database)+'/_'+str(stk)+'.sas7bdat',encoding = 'gbk')
+    ## ip_sas = pd.read_sas('/data4/yqhuang/split-docs/a_'+str(database)+'/_'+str(stk)+'.sas7bdat',encoding = 'gbk')
+    ip_sas = SAS7BDAT('/data4/yqhuang/split-docs/a_'+str(database)+'/_'+str(stk)+'.sas7bdat', encoding='gbk').to_data_frame()
+
     df_ip = ip_sas[['Id','posterprov','postercity','firmprov','firmcity1','firmcity2']]
     # df_sentiment = pd.read_csv('/data1/cufe/students/2015310884laiqiuhong/'+str(stk)+'_sentiment.csv', index_col = None, dtype = {'Id':str})
     df = pd.merge(df_sentiment, df_ip, how = 'outer')
