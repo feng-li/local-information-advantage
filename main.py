@@ -61,6 +61,5 @@ for i in range(int(a*(k-1)/100),int(a*k/100)):
 con.close()
 # for i in range(int(a*(k-1)/100),int(a*k/100)):
 #     stk = stk_name[i]
-
 stk_df = pd.DataFrame(stk_list)
-stk_df.to_csv(out_path + str(k)+'.csv')
+stk_df.to_csv(out_path + "log-" + str(k)+'.csv', index = False, header = False)
