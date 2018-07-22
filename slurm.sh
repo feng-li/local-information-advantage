@@ -8,12 +8,12 @@
 #SBATCH -e JOB%j.err # File to which STDERR will be written
 #SBATCH --mail-type=FAIL # Valid type values are BEGIN, END, FAIL, REQUEUE, and ALL
 #SBATCH --mail-user=feng.li@cufe.edu.cn
-#SBATCH --array=1-100
+#SBATCH --array=1-100%16 # Run a job array but keep the max simultaneous running task
 
-# STOCK=shanghai
+STOCK=shanghai
 # STOCK=shenzhen
 # STOCK=chuangyeban
-STOCK=zhongxiaoban
+# STOCK=zhongxiaoban
 
 srun python3 ~/code/sentiment/main.py ${STOCK} /data4/yqhuang/database_table_list/${STOCK}.csv  $SLURM_ARRAY_TASK_ID
 

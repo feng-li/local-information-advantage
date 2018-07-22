@@ -18,7 +18,7 @@ from snownlp import SnowNLP
 database = sys.argv[1]
 database_table_list_path = sys.argv[2]
 k = int(sys.argv[3])#从k-1%执行到k%
-out_path = "/data4/yqhuang/sentiment_outNew/" + database + "/" # hard code, consider rewrite this
+out_path = "/data4/yqhuang/sentiment_out/" + database + "/" # hard code, consider rewrite this
 
 with open(str(database_table_list_path)) as f:
     table_name = []
@@ -42,8 +42,12 @@ for i in range(int(a*(k-1)/100),int(a*k/100)):
         # text_score = sentiment_score(text) # This function is not so stable.
         # text_score.delete_useless_info()
         # score_list1.append(text_score.get_score())
-        test_score = SnowNlp(text)
-        score_list1.append(text_score.sentiments)
+        if len(text) == 0:
+            text_score = -1
+        else:
+            text_score = SnowNLP(text).sentiments
+
+        score_list1.append(text_score)
 
     df_sentiment = pd.DataFrame({'Id':Id, '已采':collect, '已发':send, '点击':click, '回复':reply, '时间':time, '楼层':floor, '情绪':score_list1})
     # columns = ['Id', '已采', '已发', '点击', '回复','时间','楼层','情绪']
