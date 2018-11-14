@@ -59,7 +59,7 @@ for i in range(int(a*(k-1)/100),int(a*k/100)):
 
     df_ip = ip_sas[['Id','posterprov','postercity','firmprov','firmcity1','firmcity2']]
     # df_sentiment = pd.read_csv('/data1/cufe/students/2015310884laiqiuhong/'+str(stk)+'_sentiment.csv', index_col = None, dtype = {'Id':str})
-    df = pd.merge(df_sentiment, df_ip, how = 'outer')
+    df = pd.merge(df_sentiment, df_ip)
     df.to_csv(out_path + str(stk)+"_match.csv",index = False,sep=',')
 
     stk_list.append(stk)
