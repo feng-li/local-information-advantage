@@ -95,6 +95,12 @@ ishdict = degree_word[degree_word.index('ish')+1 : ]#权重0.5
 #第三步：往情感词前一位查找程度词。为程度词设权值（extreme-4,very-3,more-2,ish-0.5），乘以情感值。
 #第四步：往情感词前一位查找否定词，得分变为相反数。
 #第五步：计算一条句子所有分词的得分相加为整句的情感得分。
+
+
+# Each sentence is segmented into words. We assign the key positive sentiment words as score 1 and key negative sentiment words as score -1 by looking up a prespecified sentiment dictionary. The score of a key sentiment word is further weighted by its modifier words with weights of 4, 3, 2, 0.5 for "extreme", "strong", "moderate", and "mild" degrees, respectively. If there is a negative word appeared before the key sentiment word, the opposite sore is used. The overall sentiment score is the sum of all the scores for the sentiment words in the sentence.
+
+
+
 class sentiment_score():
 
     def __init__(self, text):
