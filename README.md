@@ -68,7 +68,7 @@ pip install pandas numpy matplotlib scikit-learn statsmodels
 
 ## License
 
-This code is made available under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This code is made available under the MIT License.
 
 ## Citation
 
