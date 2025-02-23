@@ -2,15 +2,19 @@
 
 This repository provides the code implementation for the paper
 
-```code
+
 Yuqin Huang, Feng Li, Tong Li and Tse-Chun Lin (2024). “Local Information Advantage and Stock Returns: Evidence from Social Media”. Contemporary Accounting Research, Vol. 41(2), pp. 1089-1119. DOI: https://doi.org/10.1111/1911-3846.12935
-```
+
+## Disclaimer
+
+This code is provided **AS IS**, with no further updates or maintenance. If you have any questions, please contact [Feng Li](https://feng.li/) via email `feng.li@gsm.pku.edu.cn`.
 
 ## Overview
 
 We examine the information asymmetry between local and nonlocal investors with a large dataset of stock message board postings. We document that abnormal relative postings of a firm, i.e., unusual changes in the volume of postings from local versus nonlocal investors, capture locals’ information advantage. This measure positively predicts firms’ short-term stock returns as well as those of peer firms in the same city. Sentiment analysis shows that posting activities primarily reflect good news, potentially due to social transmission bias and short-sales constraints. We identify the information driving return predictability through content-based analysis. Abnormal relative postings also lead analysts’ forecast revisions. Overall, investors’ interactions on social media contain valuable geography-based private information.
 
-This repository contains the code used to replicate the key results from the paper.
+This repository contains the code used to replicate the key results from the paper. 
+
 
 ## Features
 
