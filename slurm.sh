@@ -7,7 +7,7 @@
 #SBATCH -o JOB%j.out # File to which STDOUT will be written
 #SBATCH -e JOB%j.err # File to which STDERR will be written
 #SBATCH --mail-type=FAIL # Valid type values are BEGIN, END, FAIL, REQUEUE, and ALL
-#SBATCH --mail-user=feng.li@cufe.edu.cn
+#SBATCH --mail-user=feng.li@gsm.pku.edu.cn
 #SBATCH --array=1-100%16 # Run a job array but keep the max simultaneous running task
 
 STOCK=shanghai
@@ -19,4 +19,4 @@ srun python3 ~/code/sentiment/main.py ${STOCK} /data4/yqhuang/database_table_lis
 
 ## SEND RESULTS
 cat JOB${SLURM_JOB_ID}.out JOB${SLURM_JOB_ID}.err |\
-/usr/bin/mail -s "JOB${SLURM_JOB_ID}.${SLURM_JOB_NAME}(${CONFIG_FILE})" feng.li@cufe.edu.cn
+/usr/bin/mail -s "JOB${SLURM_JOB_ID}.${SLURM_JOB_NAME}(${CONFIG_FILE})" feng.li@gsm.pku.edu.cn

@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Apr  4 11:07:20 2018
 
-@author: Lai
-"""
 import pymysql
 import re
 import pandas as pd

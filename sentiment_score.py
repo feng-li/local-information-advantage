@@ -13,8 +13,8 @@ import os
 #输入：数据库名称
 def connect_database(database):
     con = pymysql.connect(
-        user = "cufe",
-        password = "dashuju",
+        user = "",
+        password = "",
         port = 3306,
         host = "127.0.0.1",
         db = str(database),
@@ -150,6 +150,5 @@ class sentiment_score():
 # def match(database, stk):
 #     ip_sas = pd.read_sas('/home1/yqhuang/split-docs/a_'+str(database)+'/_'+str(stk)+'.sas7bdat',encoding = 'gbk')
 #     df_ip = ip_sas[['Id','posterprov','postercity','firmprov','firmcity1','firmcity2']]
-#     df_sentiment = pd.read_csv('/home1/cufe/students/2015310884laiqiuhong/'+str(stk)+'_sentiment.csv', index_col = None, dtype = {'Id':str})
 #     df = pd.merge(df_sentiment, df_ip, how = 'outer')
 #     df.to_csv(str(stk)+"_match.csv",index = False,sep=',')
