@@ -38,13 +38,6 @@ You can install these dependencies using `pip`:
 pip install pandas numpy matplotlib scikit-learn statsmodels
 ```
 
-## Code Structure
-
-- **data/**: Contains the raw data files used for analysis.
-- **scripts/**: Holds the Python scripts for data preprocessing, model training, and evaluation.
-- **notebooks/**: Jupyter notebooks that explain the analysis step by step.
-- **results/**: Generated outputs and plots from the analysis.
-
 ## How to Use
 
 1. Clone this repository to your local machine:
@@ -74,7 +67,7 @@ This code is made available under the MIT License.
 
 If you use this code in your own research, please cite the following paper:
 
-```
+```bibtex
 @article{HuangY2024LocalInformation,
 	title = {Local {Information} {Advantage} and {Stock} {Returns}: {Evidence} from {Social} {Media}},
 	volume = {41},
