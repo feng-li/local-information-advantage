@@ -13,8 +13,6 @@ This code is provided **AS IS**, with no further updates or maintenance. If you 
 
 We examine the information asymmetry between local and nonlocal investors with a large dataset of stock message board postings. We document that abnormal relative postings of a firm, i.e., unusual changes in the volume of postings from local versus nonlocal investors, capture locals’ information advantage. This measure positively predicts firms’ short-term stock returns as well as those of peer firms in the same city. Sentiment analysis shows that posting activities primarily reflect good news, potentially due to social transmission bias and short-sales constraints. We identify the information driving return predictability through content-based analysis. Abnormal relative postings also lead analysts’ forecast revisions. Overall, investors’ interactions on social media contain valuable geography-based private information.
 
-This repository contains the code used to replicate the key results from the paper. 
-
 
 ## Features
 
@@ -69,19 +67,17 @@ If you use this code in your own research, please cite the following paper:
 
 ```bibtex
 @article{HuangY2024LocalInformation,
-	title = {Local {Information} {Advantage} and {Stock} {Returns}: {Evidence} from {Social} {Media}},
+	title = {Local Information Advantage and Stock Returns: Evidence from Social Media},
 	volume = {41},
 	shorttitle = {Local {Information} {Advantage} and {Stock} {Returns}},
 	url = {http://doi.org/10.2139/ssrn.2501937},
 	doi = {10.1111/1911-3846.12935},
 	language = {en},
 	number = {2},
-	urldate = {2023-11-30},
 	journal = {Contemporary Accounting Research},
 	author = {Huang, Yuqin and Li, Feng and Li, Tong and Lin, Tse-Chun},
 	month = jul,
 	year = {2024},
-	note = {(alphabetical order, FT50)},
 	keywords = {Local Information Advantage, Return Predictability, Sentiment Analysis, Social Media, Topical Analysis},
 	pages = {1089--1119},
 }
