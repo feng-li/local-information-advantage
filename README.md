@@ -1,9 +1,9 @@
 # Local Information Advantage and Stock Returns: Evidence from Social Media
 
-This repository provides the code implementation for the paper
+This repository provides the code implementation for our paper
 
 
-Yuqin Huang, Feng Li, Tong Li and Tse-Chun Lin (2024). “Local Information Advantage and Stock Returns: Evidence from Social Media”. Contemporary Accounting Research, Vol. 41(2), pp. 1089-1119. DOI: https://doi.org/10.1111/1911-3846.12935
+Yuqin Huang, [Feng Li](https://feng.li), [Tong Li](https://litong17.github.io/) and [Tse-Chun Lin](https://www.hkubs.hku.hk/people/tse-chun-lin/) (2024). “Local Information Advantage and Stock Returns: Evidence from Social Media”. Contemporary Accounting Research, Vol. 41(2), pp. 1089-1119. DOI: https://doi.org/10.1111/1911-3846.12935
 
 ## Disclaimer
 
